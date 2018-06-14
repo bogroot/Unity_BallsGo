@@ -52,7 +52,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\10PoolTables\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Scripts\ballcontroller.cs" />
+     <Compile Include="Assets\Scripts\camemove.cs" />
+     <Compile Include="Assets\Scripts\CamSwitch.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/unity 3d/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
