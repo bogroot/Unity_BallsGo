@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Sence/2.0.unity
-  isLoaded: 1
-  isActive: 1
