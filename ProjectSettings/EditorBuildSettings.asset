@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Sence/Welcome.unity
+    guid: a1eff531b57afb547b433407087179fa
+  - enabled: 1
+    path: Assets/Sence/Balls Go.unity
+    guid: d518d224c001e9945964efcb8c16dc98

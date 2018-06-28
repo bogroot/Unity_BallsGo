@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Sence/2.0.unity
+- path: Assets/Sence/Balls Go.unity
   isLoaded: 1
   isActive: 1

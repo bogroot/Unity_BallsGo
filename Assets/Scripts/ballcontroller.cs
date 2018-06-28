@@ -13,6 +13,8 @@ public class ballcontroller : MonoBehaviour {
 
     public Slider xuli;
 
+    public GameManager a;
+
     private float minforce = 1.0f;
     private float maxforce = 90.0f;
     private float maxchargetime = 1.0f;
@@ -20,34 +22,35 @@ public class ballcontroller : MonoBehaviour {
     public float speed;
     public float force;
     Vector3 savepo;
-
-
+    public Vector3 init;
 
 
     void Start () {
         ba = bal.GetComponent<Rigidbody>();
         chargespeed = (maxforce - minforce) / maxchargetime;
+        init = transform.position;
     }
-	
-	
-	void FixedUpdate ()
+
+
+    void FixedUpdate ()
     {
         
-        if (ba.velocity == new Vector3(0, 0, 0))
-        {
-            cue.SetActive(true);
-            transform.eulerAngles = new Vector3(0, -90, 0); ;
-            moveandhit();
+            if (ba.velocity == new Vector3(0, 0, 0))
+            {
+                cue.SetActive(true);
+                transform.eulerAngles = new Vector3(0, -90, 0); ;
+                moveandhit();
 
-        }
-        else if(ba.velocity!=new Vector3(0,0,0))
-        {
-            cue.SetActive(false);
-            
-        }
-   
+            }
+            else if (ba.velocity != new Vector3(0, 0, 0))
+            {
+                cue.SetActive(false);
+            }
         
+
     }
+
+    
 
     void moveandhit()
     {
@@ -70,12 +73,12 @@ public class ballcontroller : MonoBehaviour {
         }
         else if(Input.GetMouseButtonDown(0))
         {
-            savepo = cuepo.localPosition;
+            savepo = cuepo.position;
             force = minforce;
         }
         else if(Input.GetMouseButton(0) )
         {
-            if(cuepo.localPosition.z<0.4f)
+            if( Mathf.Abs(cuepo.localPosition.z)<0.4f)
             {
                 cuepo.Translate(Vector3.forward * Time.deltaTime, Space.Self);
             }
@@ -85,10 +88,14 @@ public class ballcontroller : MonoBehaviour {
         }
         else if(Input.GetMouseButtonUp(0) )
         {
-            cuepo.localPosition = savepo;
+
+            cuepo.position = savepo;
             ba.AddForce(new Vector3(direct.x, 0, direct.z) * force);
         }
-           
+        else if(Input.GetKeyDown(KeyCode.R))
+        {
+            cuepo.position = transform.position;
+        }   
         
     }
 
@@ -97,6 +104,14 @@ public class ballcontroller : MonoBehaviour {
         if(collision.collider.tag=="hole")
         {
             StartCoroutine(Resetpos());
+            if (a.sixround == true)
+            {
+                a.sixscore -=2;
+            }
+            else if (a.sixround == false)
+            {
+                a.ninesocre -= 2;
+            }
         }
     }
     IEnumerator Resetpos()
